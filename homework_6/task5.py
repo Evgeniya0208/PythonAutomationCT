@@ -1,6 +1,6 @@
 class Email:
 
-    def __init__(self, sender, recipient, subject, body):
+    def __init__(self, sender: str, recipient: str, subject: str, body: str):
         self._sender = sender
         self._recipient = recipient
         self._subject = subject

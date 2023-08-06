@@ -1,8 +1,8 @@
 class Rectangle:
 
-    def __init__(self, length, width):
-        self.length = float(length)
-        self.width = float(width)
+    def __init__(self, length: float, width: float):
+        self.length = length
+        self.width = width
 
     def calculate_area(self):
         return round((self.length * self.width), 2)
