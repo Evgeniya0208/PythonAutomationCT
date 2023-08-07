@@ -6,22 +6,22 @@ class Account:
 
     def __init__(self, balance: float):
         self.account_number = next(Account.id_obj)
-        self.balance = balance
+        self._balance = balance
 
     def deposit(self, amount: float):
-        self.balance += amount
+        self._balance += amount
 
     def withdraw(self, amount: float):
-        if self.balance >= amount:
-            self.balance -= amount
+        if self._balance >= amount:
+            self._balance -= amount
         else:
             print("You don't have enough funds.")
 
     def get_balance(self):
-        return self.balance
+        return self._balance
 
     def set_balance(self, value):
-        self.balance = value
+        self._balance = value
 
 
 class SavingsAccount(Account):
@@ -30,7 +30,7 @@ class SavingsAccount(Account):
         self.interest_rate = interest_rate
 
     def calculate_interest(self):
-        self.balance += self.interest_rate * self.balance / 100
+        self._balance += self.interest_rate * self._balance / 100
 
 
 class CheckingAccount(Account):
@@ -39,17 +39,17 @@ class CheckingAccount(Account):
         self.transaction_fee = transaction_fee
 
     def deduct_transaction_fee(self):
-        self.balance -= self.transaction_fee
+        self._balance -= self.transaction_fee
 
     def withdraw(self, amount: float):
-        if self.balance >= amount:
-            self.balance -= amount
+        if self._balance >= amount:
+            self._balance -= amount
             self.deduct_transaction_fee()
         else:
             print("You don't have enough funds.")
 
     def deposit(self, amount: float):
-        self.balance += amount
+        self._balance += amount
         self.deduct_transaction_fee()
 
 
